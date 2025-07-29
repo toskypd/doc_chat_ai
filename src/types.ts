@@ -1,6 +1,5 @@
 export interface ChatAIConfig {
   apiKey: string;
-  baseUrl?: string;
   timeout?: number;
   origin?: string;
   headers?: Record<string, string>;
@@ -18,6 +17,7 @@ export interface ChatOptions {
 }
 
 export interface ChatRequest {
+  apikey: string;
   query: string;
   stream: boolean;
   sessionId?: string;

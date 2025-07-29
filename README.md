@@ -15,7 +15,6 @@ const { ChatAIClient } = require("doc_chat_ai");
 
 const client = new ChatAIClient({
   apiKey: "your-api-key-here",
-  baseUrl: "https://your-backend.com", // optional, defaults to localhost:3001
 });
 
 // Simple chat
@@ -25,13 +24,13 @@ console.log(response.response);
 
 ## Features
 
-- ✅ **Simple API** - Easy to use with minimal configuration
-- ✅ **Streaming Support** - Real-time streaming responses with Server-Sent Events
-- ✅ **Session Management** - Maintain conversation context across requests
-- ✅ **CORS Support** - Configurable headers for cross-origin requests
-- ✅ **TypeScript Support** - Full type definitions included
-- ✅ **Error Handling** - Comprehensive error handling with detailed messages
-- ✅ **Custom Headers** - Support for additional HTTP headers
+- **Simple API** - Easy to use with minimal configuration
+- **Streaming Support** - Real-time streaming responses with Server-Sent Events
+- **Session Management** - Maintain conversation context across requests
+- **CORS Support** - Configurable headers for cross-origin requests
+- **TypeScript Support** - Full type definitions included
+- **Error Handling** - Comprehensive error handling with detailed messages
+- **Custom Headers** - Support for additional HTTP headers
 
 ## Usage Examples
 
@@ -42,7 +41,6 @@ const { ChatAIClient } = require("doc_chat_ai");
 
 const client = new ChatAIClient({
   apiKey: "your-api-key",
-  baseUrl: "https://your-backend.com",
 });
 
 async function basicChat() {
@@ -170,7 +168,6 @@ new ChatAIClient(config);
 **Config Options:**
 
 - `apiKey` (required): Your ChatAI API key
-- `baseUrl` (optional): Base URL for the API (default: `http://localhost:3002`)
 - `timeout` (optional): Request timeout in milliseconds (default: `30000`)
 - `origin` (optional): Origin header for CORS (default: `*`)
 - `headers` (optional): Additional custom headers

@@ -1,6 +1,6 @@
 {
   "name": "doc_chat_ai",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "Backend SDK for ChatAI - Simple and efficient communication with ChatAI API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/toskypd/doc_chat_ai.git"
+    "url": "git+https://github.com/toskypd/doc_chat_ai.git"
   },
   "bugs": {
     "url": "https://github.com/toskypd/doc_chat_ai.git/issues"

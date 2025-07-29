@@ -10,14 +10,12 @@ import {
 
 export class ChatAIClient {
   private apiKey: string;
-  private baseUrl: string;
   private timeout: number;
   private origin: string;
   private customHeaders: Record<string, string>;
 
   constructor(config: ChatAIConfig) {
     this.apiKey = config.apiKey;
-    this.baseUrl = config.baseUrl || "http://localhost:3001";
     this.timeout = config.timeout || 30000;
     this.origin = config.origin || "*";
     this.customHeaders = config.headers || {};
@@ -32,6 +30,7 @@ export class ChatAIClient {
    */
   async chat(query: string, options: ChatOptions = {}): Promise<ChatResponse> {
     const requestBody: ChatRequest = {
+      apikey: this.apiKey,
       query: query,
       stream: false,
       ...(options.sessionId && { sessionId: options.sessionId }),
@@ -44,10 +43,9 @@ export class ChatAIClient {
       ...(options.metadata && { metadata: options.metadata }),
     };
 
-    const url = `${this.baseUrl}/api/v1/chat`;
+    const url = `https://chatai.abstraxn.com/api/v1/chat/?apikey=${this.apiKey}`;
     const headers = {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${this.apiKey}`,
       Accept: "application/json",
       Origin: this.origin,
       ...this.customHeaders,
@@ -99,6 +97,7 @@ export class ChatAIClient {
     options: ChatOptions = {}
   ): AsyncGenerator<ChatChunk> {
     const requestBody: ChatRequest = {
+      apikey: this.apiKey,
       query: query,
       stream: true,
       ...(options.sessionId && { sessionId: options.sessionId }),
@@ -111,10 +110,9 @@ export class ChatAIClient {
       ...(options.metadata && { metadata: options.metadata }),
     };
 
-    const url = `${this.baseUrl}/api/v1/chat`;
+    const url = `https://chatai.abstraxn.com/api/v1/chat/?apikey=${this.apiKey}`;
     const headers = {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${this.apiKey}`,
       Accept: "text/event-stream",
       Origin: this.origin,
       ...this.customHeaders,
@@ -208,7 +206,6 @@ export class ChatAIClient {
    */
   getConfig(): Omit<ChatAIConfig, "apiKey"> {
     return {
-      baseUrl: this.baseUrl,
       timeout: this.timeout,
       origin: this.origin,
       headers: { ...this.customHeaders },
